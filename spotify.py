@@ -49,7 +49,12 @@ st.write("""El Dataset a utilizar es desde el archivo 278k_song_labelled.csv, lo
 - **valence**: este valor representa la positividad de una canción, este valor es representado con flotantes entre 0.0 y 1.0, mientras una valencia es más baja puede considerarse como triste o depresiva, mientras que si es un valor más cercano a uno representa una canción más eufórica o alegre
 - **tempo**: valores flotantes, que representan las pulsaciones por minuto (PPM) de la canción, este término musical describe el ritmo de una canción.
 - **spec_rate**: este valor representa el muestreo espectral, se utiliza para saber si la calidad de una canción es buena o no, de igual describe este dato con flotantes, sin embargo, para este proyecto no será necesario utilizar este dato.
-- **labels**: contiene el número de etiquetas asociadas a esta canción, las cuales se representan con enteros, generalmente son categorías como géneros, sin embargo, pueden ser clasificadas por el artista o por su sello discográfico, pero, así como con el spec_rate, no será necesario para nuestro proyecto.
+- **labels**: contiene el género o categoría al que se le relaciona, las cuales son
+    - happy (1) 
+    - sad (0)
+    - calm (3)
+    - energetic (2).
+
 Estos datos son muy importantes para nuestro problema de negocio, pues a través de un análisis de características de las canciones que el usuario escuche, se podrán recomendar canciones con características similares, de manera que el usuario tendrá una mejor satisfacción al recibir recomendaciones a través de Spotify.
 """)
 st.write("#### :green[Inconsistencias]")
@@ -60,10 +65,10 @@ st.write("#### :green[Selección y Limpieza]")
 st.write("""
 En general este Dataset está muy completo, no encontramos inconsistencias de datos, no hay datos nulos ni duplicados, lo cual nos permitirá realizar un análisis de datos bastante completo.
 Las técnicas que utilizamos seleccionar y limpiar los datos que queremos obtener del Dataset fueron:
-1.	Carga de datos: al ser sólo un archivo .csv fue bastante sencillo cargar los datos.
+1.	Carga de datos: cargamos los dos archivos .csv y los concatenamos, para después eliminar columnas repetidas.
 2.	Dataframe: covertimos los datos cargados en un Dataframe para poder manipular los datos.
-3.	Drop de datos innecesarios, como lo mencionamos en la descripción de datos, las columnas spec_rate y labels no serían relevantes para el proyecto, por lo que optamos por eliminarlas
-4.	Rename: renombramos la columna “Unnamed: 0” por “song index” para ser más descriptivos con el dato de índice que nos brinda esta columna.
+3.	Drop de datos innecesarios, como lo mencionamos en la descripción de datos, la columna spec_rate no sería relevante para el proyecto, por lo que optamos por eliminarla.
+4.	Rename: renombramos la columna “Unnamed: 0” por “song index” para ser más descriptivos con el dato de índice que nos brinda esta columna, además, renombramos la columna “labels” por “mood”, ya que indica con índice la emoción correspondiente.
 5.	Creación de una nueva columna: ya que queremos que nuestros datos sean más claros, creamos una nueva columna la cual dice la duración de las canciones en minutos y segundos.
 a.	Primero copiamos los datos de “duration (ms)” a la columna “duration (mm:ss)” convirténdolos a timedelta
 b.	Después aplicamos una función lambda que permite que se muestre el tiempo en un formato de minutos y segundos.
@@ -72,19 +77,52 @@ b.	Después aplicamos una función lambda que permite que se muestre el tiempo e
 
 st.write("#### :green[Integración y Transformación de los Datos]")
 st.write("""
-    Para la integración y transformación de los datos, no fue necesario realizar ninguna acción, ya que el dataset se encuentra completo y no tiene datos nulos, por lo que no fue necesario realizar ninguna transformación de datos.
+        Concatenamos ambos archivos csv para obtener los datos relacionados con la uri y los labels, además de eliminar las columnas duplicadas.
+        Renombramos las columnas para manipularlas de mejor manera.
+        Creamos una nueva columna que contiene la duración de la canción en minutos y segundos para poder interpretarla de mejor manera.
+        Mapeamos los estados de ánimo a valores numéricos para poder manipularlos de mejor manera.
+        Indicamos el índice de la canción. 
          """)
 
-# Cargar el Dataset
-data = pd.read_csv('./data/278k_song_labelled.csv')
+# Cargamos el Dataset
+data = pd.concat([pd.read_csv('./data/278k_song_labelled.csv'),
+                  pd.read_csv('./data/278k_labelled_uri.csv')], axis=1)
+
+# Convertimos los datos a un DataFrame
 df = pd.DataFrame(data)
 
-# Preprocesamiento
-df = df.drop(['spec_rate', 'labels'], axis=1)
-df = df.rename(columns={'Unnamed: 0': 'song index'})
+st.write("#### :green[Dataset Original]")
+
+# Eliminamos las columnas repetidas
+df = df.loc[:,~df.columns.duplicated()]
+
+# Eliminamos Unnamed: 0.1
+df = df.drop(['Unnamed: 0.1'], axis=1)
+
+st.write(df)
+
+# Al no haber datos nulos, podemos continuar con la preparación de los datos
+# No utilizaremos las columnas de spec_rate y labels, por lo que las eliminamos
+df = df.drop(['spec_rate'], axis=1)
+
+# Renombramos columnas para manipularlas
+df = df.rename(columns={ 'Unnamed: 0': 'track index', 'uri': 'track uri', 'labels': 'mood'})
+
+# Creamos una nueva columna que contiene la duracion la cancion en minutos y segundos para poder interpretarla de mejor manera, sin embargo seguiremos utilizando los ms para el analisis de los datos
 df['duration (mm:ss)'] = pd.to_timedelta(df['duration (ms)'], unit='ms')
+# utilizamos una funcion lambda para que la duracion solo muestre minutos y segundos
 df['duration (mm:ss)'] = df['duration (mm:ss)'].apply(lambda x: f'{int(x.total_seconds() // 60):02d}:{int(x.total_seconds() % 60):02d}')
-df.set_index('song index', inplace=True)
+
+# Hacemos un diccionario para mapear los estados de animo a valores numericos
+emotions_mapping = {'sad': 0, 'happy': 1, 'energetic': 2, 'calm': 3}
+# Invertimos el mapeo para poder interpretar los datos
+inverted_emotions_mapping = {v: k for k, v in emotions_mapping.items()}
+# Mapeamos los estados de animo a valores numericos
+df['mood'] = df['mood'].map(inverted_emotions_mapping)
+
+# indicamos el indice de la cancion
+df.set_index('track index', inplace=True)
+
 
 st.markdown("""
             ```python
@@ -104,7 +142,6 @@ st.markdown("""
                 # Al no haber datos nulos, podemos continuar con la preparación de los datos
                 # No utilizaremos las columnas de spec_rate y labels, por lo que las eliminamos
                 df = df.drop(['spec_rate'], axis=1)
-
                 # Renombramos columnas para manipularlas
                 df = df.rename(columns={ 'Unnamed: 0': 'track index', 'uri': 'track uri', 'labels': 'mood'})
 
