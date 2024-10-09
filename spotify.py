@@ -88,16 +88,42 @@ df.set_index('song index', inplace=True)
 
 st.markdown("""
             ```python
-                # Carga de datos y creacion del dataframe
-                data = pd.read_csv('./data/278k_song_labelled.csv')
+                # Cargamos el Dataset
+                data = pd.concat([pd.read_csv('./data/278k_song_labelled.csv'),
+                                pd.read_csv('./data/278k_labelled_uri.csv')], axis=1)
+
+                # Convertimos los datos a un DataFrame
                 df = pd.DataFrame(data)
-                
-                # Preprocesamiento
-                df = df.drop(['spec_rate', 'labels'], axis=1)
-                df = df.rename(columns={'Unnamed: 0': 'song index'})
+
+                # Eliminamos las columnas repetidas
+                df = df.loc[:,~df.columns.duplicated()]
+
+                # Eliminamos Unnamed: 0.1
+                df = df.drop(['Unnamed: 0.1'], axis=1)
+
+                # Al no haber datos nulos, podemos continuar con la preparación de los datos
+                # No utilizaremos las columnas de spec_rate y labels, por lo que las eliminamos
+                df = df.drop(['spec_rate'], axis=1)
+
+                # Renombramos columnas para manipularlas
+                df = df.rename(columns={ 'Unnamed: 0': 'track index', 'uri': 'track uri', 'labels': 'mood'})
+
+                # Creamos una nueva columna que contiene la duracion la cancion en minutos y segundos para poder interpretarla de mejor manera, sin embargo seguiremos utilizando los ms para el analisis de los datos
                 df['duration (mm:ss)'] = pd.to_timedelta(df['duration (ms)'], unit='ms')
+                # utilizamos una funcion lambda para que la duracion solo muestre minutos y segundos
                 df['duration (mm:ss)'] = df['duration (mm:ss)'].apply(lambda x: f'{int(x.total_seconds() // 60):02d}:{int(x.total_seconds() % 60):02d}')
-                df.set_index('song index', inplace=True)
+                # utilizamos la funcion lambda para indicar que mood representa el estado de animo de la cancion
+                display(df)
+
+                # Hacemos un diccionario para mapear los estados de animo a valores numericos
+                emotions_mapping = {'sad': 0, 'happy': 1, 'energetic': 2, 'calm': 3}
+                # Invertimos el mapeo para poder interpretar los datos
+                inverted_emotions_mapping = {v: k for k, v in emotions_mapping.items()}
+                # Mapeamos los estados de animo a valores numericos
+                df['mood'] = df['mood'].map(inverted_emotions_mapping)
+
+                # indicamos el indice de la cancion
+                df.set_index('track index', inplace=True)
             """)
 
 st.write("#### :violet[Resultado del Procesamiento]")
