@@ -180,7 +180,7 @@ attributes = ['danceability', 'energy', 'loudness', 'speechiness', 'acousticness
 fig, axs = plt.subplots(3, 3, figsize=(14, 8))
 axs = axs.flatten()  # Aplanar la matriz de ejes para acceder más fácilmente
 
-colors = ['red', 'green', 'blue', 'yellow', 'cyan', 'magenta', 'black', 'orange', 'pink']
+colors = ['crimson', 'tomato', 'darkturquoise', 'palegreen', 'gold', 'dodgerblue', 'violet', 'cornflowerblue', 'mediumvioletred']
 for i, attribute in enumerate(attributes):
     axs[i].bar(df_graphics.index, df_graphics[attribute], color=colors[i])
     axs[i].set_title(attribute)
@@ -189,3 +189,20 @@ for i, attribute in enumerate(attributes):
 
 plt.tight_layout()
 st.pyplot(fig)
+
+
+st.write('## :green[Datos clasificados por mood]')
+fig, axs = plt.subplots(3, 3, figsize=(14, 8))
+for mood in df['mood'].unique():
+    plt.figure(figsize=(14, 8))
+    for i, attribute in enumerate(attributes):
+        plt.subplot(3, 3, i + 1)
+        plt.hist(df[df['mood'] == mood][attribute], bins=20, color=colors[i])
+        plt.title(attribute)
+        plt.ylabel(attribute)
+        plt.xticks(rotation=45)
+    
+    plt.suptitle(mood.upper(), fontsize=16)  # Título principal con el valor de 'mood'
+    plt.subplots_adjust(top=0.85)  # Ajusta para que no se superpongan el título y las gráficas
+    plt.tight_layout(rect=[0, 0, 1, 0.95])  # Deja espacio para el título
+    st.pyplot(plt)

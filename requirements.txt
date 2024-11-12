@@ -1,0 +1,6 @@
+spotipy
+pandas
+tensorflow
+matplotlib 
+seaborn
+sklearn
