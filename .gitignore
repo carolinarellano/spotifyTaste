@@ -17,3 +17,5 @@ venv/
 
 # VSCode workspace settings
 .vscode/
+
+*.cache
