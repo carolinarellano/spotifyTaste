@@ -1,0 +1,9 @@
+Árbol de Decisiones
+Predicción: ['sad']
+Probabilidad de cada clase: [[0.    0.    0.016 0.984]]
+Probabilidad de acierto: 85.0%
+
+kNN
+Predicción: ['sad']
+Probabilidad de cada clase: [[0. 0. 0. 1.]]
+Probabilidad de acierto: 82.58333333333333%
