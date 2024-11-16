@@ -1,0 +1,400 @@
+
+========================================
+          Resultados del modelo          
+========================================
+
+Arbol de Decisiones
+----------------------------------------
+Nombre de la canción      : Everything is romantic
+Prediccion                : happy
+Probabilidad de cada clase: [[0.         0.         0.71052632 0.28947368]]
+Precision del modelo      : 85.00%
+
+k-Nearest Neighbors (kNN)
+----------------------------------------
+Prediccion                : sad
+Probabilidad de cada clase: [[0.         0.         0.13622343 0.86377657]]
+Precision del modelo      : 82.58%
+
+========================================
+
+
+========================================
+          Resultados del modelo          
+========================================
+
+Arbol de Decisiones
+----------------------------------------
+Nombre de la canción      : sentado aquí,
+Prediccion                : happy
+Probabilidad de cada clase: [[0.         0.         0.71052632 0.28947368]]
+Precision del modelo      : 85.00%
+
+k-Nearest Neighbors (kNN)
+----------------------------------------
+Prediccion                : sad
+Probabilidad de cada clase: [[0.         0.         0.13622343 0.86377657]]
+Precision del modelo      : 82.58%
+
+========================================
+
+
+========================================
+          Resultados del modelo          
+========================================
+
+Arbol de Decisiones
+----------------------------------------
+Nombre de la canción      : Corazón : Classics
+Prediccion                : happy
+Probabilidad de cada clase: [[0.         0.         0.71052632 0.28947368]]
+Precision del modelo      : 85.00%
+
+k-Nearest Neighbors (kNN)
+----------------------------------------
+Prediccion                : sad
+Probabilidad de cada clase: [[0.         0.         0.13622343 0.86377657]]
+Precision del modelo      : 82.58%
+
+========================================
+
+
+========================================
+          Resultados del modelo          
+========================================
+
+Arbol de Decisiones
+----------------------------------------
+Nombre de la canción      : Tarde o temprano
+Prediccion                : happy
+Probabilidad de cada clase: [[0.         0.         0.71052632 0.28947368]]
+Precision del modelo      : 85.00%
+
+k-Nearest Neighbors (kNN)
+----------------------------------------
+Prediccion                : sad
+Probabilidad de cada clase: [[0.         0.         0.13622343 0.86377657]]
+Precision del modelo      : 82.58%
+
+========================================
+
+
+========================================
+          Resultados del modelo          
+========================================
+
+Arbol de Decisiones
+----------------------------------------
+Nombre de la canción      : DÍA A DÍA
+Prediccion                : happy
+Probabilidad de cada clase: [[0.         0.         0.71052632 0.28947368]]
+Precision del modelo      : 85.00%
+
+k-Nearest Neighbors (kNN)
+----------------------------------------
+Prediccion                : sad
+Probabilidad de cada clase: [[0.         0.         0.13622343 0.86377657]]
+Precision del modelo      : 82.58%
+
+========================================
+
+
+========================================
+          Resultados del modelo          
+========================================
+
+Arbol de Decisiones
+----------------------------------------
+Nombre de la canción      : Continental
+Prediccion                : happy
+Probabilidad de cada clase: [[0.         0.         0.71052632 0.28947368]]
+Precision del modelo      : 85.00%
+
+k-Nearest Neighbors (kNN)
+----------------------------------------
+Prediccion                : sad
+Probabilidad de cada clase: [[0.         0.         0.13622343 0.86377657]]
+Precision del modelo      : 82.58%
+
+========================================
+
+
+========================================
+          Resultados del modelo          
+========================================
+
+Arbol de Decisiones
+----------------------------------------
+Nombre de la canción      : Primaveral
+Prediccion                : happy
+Probabilidad de cada clase: [[0.         0.         0.71052632 0.28947368]]
+Precision del modelo      : 85.00%
+
+k-Nearest Neighbors (kNN)
+----------------------------------------
+Prediccion                : sad
+Probabilidad de cada clase: [[0.         0.         0.13622343 0.86377657]]
+Precision del modelo      : 82.58%
+
+========================================
+
+
+========================================
+          Resultados del modelo          
+========================================
+
+Arbol de Decisiones
+----------------------------------------
+Nombre de la canción      : Soñé - En Vivo
+Prediccion                : happy
+Probabilidad de cada clase: [[0.         0.         0.71052632 0.28947368]]
+Precision del modelo      : 85.00%
+
+k-Nearest Neighbors (kNN)
+----------------------------------------
+Prediccion                : sad
+Probabilidad de cada clase: [[0.         0.         0.13622343 0.86377657]]
+Precision del modelo      : 82.58%
+
+========================================
+
+
+========================================
+          Resultados del modelo          
+========================================
+
+Arbol de Decisiones
+----------------------------------------
+Nombre de la canción      : Nada
+Prediccion                : happy
+Probabilidad de cada clase: [[0.         0.         0.71052632 0.28947368]]
+Precision del modelo      : 85.00%
+
+k-Nearest Neighbors (kNN)
+----------------------------------------
+Prediccion                : sad
+Probabilidad de cada clase: [[0.         0.         0.13622343 0.86377657]]
+Precision del modelo      : 82.58%
+
+========================================
+
+
+========================================
+          Resultados del modelo          
+========================================
+
+Arbol de Decisiones
+----------------------------------------
+Nombre de la canción      : We Are The People
+Prediccion                : happy
+Probabilidad de cada clase: [[0.         0.         0.71052632 0.28947368]]
+Precision del modelo      : 85.00%
+
+k-Nearest Neighbors (kNN)
+----------------------------------------
+Prediccion                : sad
+Probabilidad de cada clase: [[0.         0.         0.13622343 0.86377657]]
+Precision del modelo      : 82.58%
+
+========================================
+
+
+========================================
+          Resultados del modelo          
+========================================
+
+Arbol de Decisiones
+----------------------------------------
+Nombre de la canción      : Sci-Fi
+Prediccion                : happy
+Probabilidad de cada clase: [[0.         0.46153846 0.53846154 0.        ]]
+Precision del modelo      : 85.00%
+
+k-Nearest Neighbors (kNN)
+----------------------------------------
+Prediccion                : happy
+Probabilidad de cada clase: [[0.         0.42806915 0.57193085 0.        ]]
+Precision del modelo      : 82.58%
+
+========================================
+
+
+========================================
+          Resultados del modelo          
+========================================
+
+Arbol de Decisiones
+----------------------------------------
+Nombre de la canción      : To My Love - Tainy Remix
+Prediccion                : happy
+Probabilidad de cada clase: [[0.         0.46153846 0.53846154 0.        ]]
+Precision del modelo      : 85.00%
+
+k-Nearest Neighbors (kNN)
+----------------------------------------
+Prediccion                : happy
+Probabilidad de cada clase: [[0.         0.42806915 0.57193085 0.        ]]
+Precision del modelo      : 82.58%
+
+========================================
+
+
+========================================
+          Resultados del modelo          
+========================================
+
+Arbol de Decisiones
+----------------------------------------
+Nombre de la canción      : LOVELANGUAGE
+Prediccion                : happy
+Probabilidad de cada clase: [[0.         0.46153846 0.53846154 0.        ]]
+Precision del modelo      : 85.00%
+
+k-Nearest Neighbors (kNN)
+----------------------------------------
+Prediccion                : happy
+Probabilidad de cada clase: [[0.         0.42806915 0.57193085 0.        ]]
+Precision del modelo      : 82.58%
+
+========================================
+
+
+========================================
+          Resultados del modelo          
+========================================
+
+Arbol de Decisiones
+----------------------------------------
+Nombre de la canción      : PIDE
+Prediccion                : happy
+Probabilidad de cada clase: [[0.         0.46153846 0.53846154 0.        ]]
+Precision del modelo      : 85.00%
+
+k-Nearest Neighbors (kNN)
+----------------------------------------
+Prediccion                : happy
+Probabilidad de cada clase: [[0.         0.42806915 0.57193085 0.        ]]
+Precision del modelo      : 82.58%
+
+========================================
+
+
+========================================
+          Resultados del modelo          
+========================================
+
+Arbol de Decisiones
+----------------------------------------
+Nombre de la canción      : Igual Que Un Ángel (with Peso Pluma)
+Prediccion                : happy
+Probabilidad de cada clase: [[0.         0.46153846 0.53846154 0.        ]]
+Precision del modelo      : 85.00%
+
+k-Nearest Neighbors (kNN)
+----------------------------------------
+Prediccion                : happy
+Probabilidad de cada clase: [[0.         0.42806915 0.57193085 0.        ]]
+Precision del modelo      : 82.58%
+
+========================================
+
+
+========================================
+          Resultados del modelo          
+========================================
+
+Arbol de Decisiones
+----------------------------------------
+Nombre de la canción      : Young Miko: Bzrp Music Sessions, Vol. 58
+Prediccion                : happy
+Probabilidad de cada clase: [[0.         0.46153846 0.53846154 0.        ]]
+Precision del modelo      : 85.00%
+
+k-Nearest Neighbors (kNN)
+----------------------------------------
+Prediccion                : happy
+Probabilidad de cada clase: [[0.         0.42806915 0.57193085 0.        ]]
+Precision del modelo      : 82.58%
+
+========================================
+
+
+========================================
+          Resultados del modelo          
+========================================
+
+Arbol de Decisiones
+----------------------------------------
+Nombre de la canción      : MOJABI GHOST
+Prediccion                : happy
+Probabilidad de cada clase: [[0.         0.46153846 0.53846154 0.        ]]
+Precision del modelo      : 85.00%
+
+k-Nearest Neighbors (kNN)
+----------------------------------------
+Prediccion                : happy
+Probabilidad de cada clase: [[0.         0.42806915 0.57193085 0.        ]]
+Precision del modelo      : 82.58%
+
+========================================
+
+
+========================================
+          Resultados del modelo          
+========================================
+
+Arbol de Decisiones
+----------------------------------------
+Nombre de la canción      : No digas nada
+Prediccion                : happy
+Probabilidad de cada clase: [[0.         0.46153846 0.53846154 0.        ]]
+Precision del modelo      : 85.00%
+
+k-Nearest Neighbors (kNN)
+----------------------------------------
+Prediccion                : happy
+Probabilidad de cada clase: [[0.         0.42806915 0.57193085 0.        ]]
+Precision del modelo      : 82.58%
+
+========================================
+
+
+========================================
+          Resultados del modelo          
+========================================
+
+Arbol de Decisiones
+----------------------------------------
+Nombre de la canción      : NO ME QUIERO CASAR
+Prediccion                : happy
+Probabilidad de cada clase: [[0.         0.46153846 0.53846154 0.        ]]
+Precision del modelo      : 85.00%
+
+k-Nearest Neighbors (kNN)
+----------------------------------------
+Prediccion                : happy
+Probabilidad de cada clase: [[0.         0.42806915 0.57193085 0.        ]]
+Precision del modelo      : 82.58%
+
+========================================
+
+
+========================================
+          Resultados del modelo          
+========================================
+
+Arbol de Decisiones
+----------------------------------------
+Nombre de la canción      : Sal rosa
+Prediccion                : happy
+Probabilidad de cada clase: [[0.         0.46153846 0.53846154 0.        ]]
+Precision del modelo      : 85.00%
+
+k-Nearest Neighbors (kNN)
+----------------------------------------
+Prediccion                : happy
+Probabilidad de cada clase: [[0.         0.42806915 0.57193085 0.        ]]
+Precision del modelo      : 82.58%
+
+========================================
+
