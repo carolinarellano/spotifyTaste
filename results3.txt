@@ -1,9 +1,0 @@
-Árbol de Decisiones
-Predicción: ['happy']
-Probabilidad de cada clase: [[0. 0. 1. 0.]]
-Probabilidad de acierto: 85.0%
-
-kNN
-Predicción: ['happy']
-Probabilidad de cada clase: [[0. 0. 1. 0.]]
-Probabilidad de acierto: 82.58333333333333%
