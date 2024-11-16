@@ -232,7 +232,7 @@ edge [fontname="helvetica"] ;
 110 -> 114 ;
 115 [label="acousticness <= -0.003\nentropy = 0.884\nsamples = 84\nvalue = [68, 0, 6, 10]\nclass = calm", fillcolor="#eb9c64"] ;
 109 -> 115 ;
-116 [label="instrumentalness <= 1.411\nentropy = 0.959\nsamples = 28\nvalue = [21, 0, 6, 1]\nclass = calm", fillcolor="#eda978"] ;
+116 [label="valence <= -0.331\nentropy = 0.959\nsamples = 28\nvalue = [21, 0, 6, 1]\nclass = calm", fillcolor="#eda978"] ;
 115 -> 116 ;
 117 [label="entropy = 0.391\nsamples = 13\nvalue = [12, 0, 0, 1]\nclass = calm", fillcolor="#e78c49"] ;
 116 -> 117 ;
