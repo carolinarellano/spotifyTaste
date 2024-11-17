@@ -3,86 +3,152 @@ import matplotlib.pyplot as plt
 import streamlit as st
 from skimage import io
 
+# Configuración de estilo de fondo acorde a Spotify
+st.markdown(
+    """
+    <style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
+    .header {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 20px;
+    }
+    .title {
+        color: green;
+        text-align: center;
+        font-size: 60px;
+        font-family: 'Montserrat', sans-serif;
+    }
+    .subtitles{
+        color: white;
+        text-align: center;
+        font-size: 40px;
+        font-family: 'Montserrat', sans-serif;
+    }
+    .topic{
+        color: #094293 ;
+        text-align: left;
+        font-size: 20px;
+        font-family: 'Montserrat', sans-serif;
+    }
+    .members {
+        text-align: center;
+    }
+    .text{
+        text-align: justify;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
 # Cargar imágenes
 Logo = io.imread(r'./img/ITESO_Logo.png')
 Spotify = io.imread(r'./img/Spotify_logo.png')
 
-# Mostrar imágenes
-st.image(Logo, width=200)
-st.title('Primer entrega - Proyecto Final')
-st.subheader('Programación para minería de datos', )
+# Centering the content
+st.markdown('<h1 class="title">Spotify Taste</h1>', unsafe_allow_html=True)
+cols = st.columns(3)
+with cols[1]:
+   st.image(Spotify, width=400)
+
+st.markdown("<hr>", unsafe_allow_html=True)
+
+st.markdown('<h1 class="title" style="color:white; font-size:20px">Equipo</h1>',unsafe_allow_html=True)
+st.markdown("""<br><p class="members">\n</p>
+<p class="members">1. Yochabel Martínez Cázares 738438 ISC\n</p>
+<p class="members">2. Ana Carolina Arellano Valdez 738422 ISC\n</p>
+<p class="members">3. Axel Leonardo Fernández Albarran 739878 ISC\n</p>
+<p class="members">4. Claudio Bayro Jablonksi 731886 ISC\n</p><br>""",unsafe_allow_html=True)
+st.markdown("<hr>", unsafe_allow_html=True)
 
 
-col1, col2 = st.columns(2)
-
-with col1:
-    st.write('**Preparación y modelado de Datos**')
-    st.write('Análisis de Características de Canciones de Spotify')
-with col2:
-    st.image(Spotify, width=200)
+st.markdown('<h2 class="subtitles">Entendimiento del negocio</h2>',unsafe_allow_html=True)
+st.markdown('<h2 class="topic">Problema de Negocio</h2>',unsafe_allow_html=True)
+st.markdown("<p class='text'>Optimización de recomendaciones musicales.</p>",unsafe_allow_html=True)
+st.markdown("<p class='text'>Aumentar la satisfacción del usuario en Spotify mediante la mejora del sistema de recomendaciones musicales considerando los estados de ánimo actuales de los usuarios, ofreciendo sugerencias de canciones más alineadas con sus necesidades emocionales en tiempo real.</p<>",unsafe_allow_html=True)
 
 
-st.write(":red[Equipo]")
-st.write("1. **Yochabel Martínez Cázares** 738438 ISC")
-st.write("2. **Ana Carolina Arellano Valdez** 738422 ISC")
-st.write("3. **Axel Leonardo Fernández Albarran** 739878 ISC")
-st.write("4. **Claudio Bayro Jablonksi 731886 ISC**")
+st.markdown("""
+            <h2 class="topic">Problema de Minería de Datos</h2>
+            <p class='text'>Desarrollar un modelo de recomendación que en base búsqueda de patrones, sugiera canciones basadas en el estado de ánimo actual del usuario, mejorando la precisión y relevancia de las recomendaciones personales musicales en la plataforma Spotify.</p>
+            
+            <hr>
+            <h2 class="subtitles">Entendimiento de los datos</h2>
+            <h2 class="topic">Dataset</h2>
+            <p class='text'>El Dataset a utilizar es desde el archivo 278k_song_labelled.csv, lo obtuvimos de kaggle, y esta información se puede obtener directamente de Spotify for Developers, este es un registro de aproximadamente 277938 canciones, el cual contiene la información correspondiente a cada canción distribuida en 13 columnas, estos datos son:\n
+            - duration (ms): duración de la canción, valores enteros
+            - danceability: qué tan bailable es una canción, valores flotantes entre 0.0 y 1.0, el cual se calcula con base en el tempo, la estabilidad del ritmo y la actividad, 0.0 representando lo menos bailable y 1.0 lo más bailable. 
+            - energy: qué tan energética es una canción, valores flotantes entre 0.0 y 1.0, este se calcula a partir de las características de una canción, si es rápida, ruidosa o fuerte y con estos mismos se representa la intensidad de la canción.
+            - loudness: qué tan ruidosa es una canción, valores flotantes basados en los decibeles que tiene, este valor puede ir desde -60 dB hasta 0 dB.
+            - spechiness: detecta la presencia de palabras habladas en la pista, valores flotantes que van desde 0.33 a 0.66
+            - acousticness: este valor se representa igualmente con flotantes que van desde 0.0 a 1.0
+            - instrumentalness: predice si una canción no contiene voces, en este contexto, las palabras “oh”, “ah” cuentan como instrumental. De igual manera está descrito con valores flotantes de entre 0.0 a 1.0, si una canción tiene instrumentalidad que supera el 0.5 es contado como instrumental.
+            - valence: este valor representa la positividad de una canción, este valor es representado con flotantes entre 0.0 y 1.0, mientras una valencia es más baja puede considerarse como triste o depresiva, mientras que si es un valor más cercano a uno representa una canción más eufórica o alegre
+            - tempo: valores flotantes, que representan las pulsaciones por minuto (PPM) de la canción, este término musical describe el ritmo de una canción.
+            - spec_rate: este valor representa el muestreo espectral, se utiliza para saber si la calidad de una canción es buena o no, de igual describe este dato con flotantes, sin embargo, para este proyecto no será necesario utilizar este dato.
+            - labels: contiene el género o categoría al que se le relaciona, las cuales son
+                - happy (1) 
+                - sad (0)
+                - calm (3)
+                - energetic (2).
 
+            Estos datos son muy importantes para nuestro problema de negocio, pues a través de un análisis de características de las canciones que el usuario escuche, se podrán recomendar canciones con características similares, de manera que el usuario tendrá una mejor satisfacción al recibir recomendaciones a través de Spotify.
+            </p>
+            
+            <h2 class="topic">Inconsistencias</h2>
+            <p class='text'>En general este Dataset está muy completo, no encontramos inconsistencias de datos, no hay datos nulos ni duplicados, lo cual nos permitirá realizar un análisis de datos bastante completo.</p>
+            
+            <hr>
+            <h2 class="subtitles">Preparacion de los Datos</h2>
+            <h2 class="topic">Selección y Limpieza</h2>
+            """,unsafe_allow_html=True)
 
-st.subheader(":blue[Entendimiento del Negocio]")
-st.write("#### :green[Problema de Negocio]")
-st.write("Optimización de recomendaciones musicales.")
-st.write("Aumentar la satisfacción del usuario en Spotify mediante la mejora del sistema de recomendaciones musicales considerando los estados de ánimo actuales de los usuarios, ofreciendo sugerencias de canciones más alineadas con sus necesidades emocionales en tiempo real.")
-st.write("#### :green[Problema de Minería de Datos]")
-st.write("Desarrollar un modelo de recomendación que en base búsqueda de patrones, sugiera canciones basadas en el estado de ánimo actual del usuario, mejorando la precisión y relevancia de las recomendaciones personales musicales en la plataforma Spotify.")
+st.markdown("""
+            <p class='text'> 
+                En general este Dataset está muy completo, no encontramos inconsistencias de datos, no hay datos nulos ni duplicados, lo cual nos permitirá realizar un análisis de datos bastante completo.\n
+            </p>    
+            <p class='text'> 
+                Las técnicas que utilizamos seleccionar y limpiar los datos que queremos obtener del Dataset fueron:\n
+            </p>
+            <p class='text'> 
+                1. Carga de datos: cargamos los dos archivos .csv y los concatenamos, para después eliminar columnas repetidas.
+            </p>
+            <p class='text'> 
+                2. Dataframe: covertimos los datos cargados en un Dataframe para poder manipular los datos.</li>
+            </p>
+            <p class='text'> 
+                3. Drop de datos innecesarios, como lo mencionamos en la descripción de datos, la columna spec_rate no sería relevante para el proyecto, por lo que optamos por eliminarla.</li>
+            </p>
+            <p class='text'> 
+                4. Rename: renombramos la columna “Unnamed: 0” por “song index” para ser más descriptivos con el dato de índice que nos brinda esta columna, además, renombramos la columna “labels” por “mood”, ya que indica con índice la emoción correspondiente.</li>
+            </p>
+            <p class='text'> 
+                5. Creación de una nueva columna: ya que queremos que nuestros datos sean más claros, creamos una nueva columna la cual dice la duración de las canciones en minutos y segundos.</li>
+            </p>
+            <p class='text'> 
+                a.	Primero copiamos los datos de “duration (ms)” a la columna “duration (mm:ss)” convirténdolos a timedelta
+            </p>
+            <p class='text'> 
+                b.	Después aplicamos una función lambda que permite que se muestre el tiempo en un formato de minutos y segundos.
+            </p>
+            <p class='text'> 
+                6.	Set index: utilizamos la columna “song index” como la columna de índice para este dataframe.
+            </p>
+            """,unsafe_allow_html=True)
 
-st.subheader(":blue[Entendimiento de los Datos]")
-st.write("#### :green[Dataset]")
-st.write("""El Dataset a utilizar es desde el archivo 278k_song_labelled.csv, lo obtuvimos de kaggle, y esta información se puede obtener directamente de Spotify for Developers, este es un registro de aproximadamente 277938 canciones, el cual contiene la información correspondiente a cada canción distribuida en 13 columnas, estos datos son:
-- **duration (ms)**: duración de la canción, valores enteros
-- **danceability**: qué tan bailable es una canción, valores flotantes entre 0.0 y 1.0, el cual se calcula con base en el tempo, la estabilidad del ritmo y la actividad, 0.0 representando lo menos bailable y 1.0 lo más bailable. 
-- **energy**: qué tan energética es una canción, valores flotantes entre 0.0 y 1.0, este se calcula a partir de las características de una canción, si es rápida, ruidosa o fuerte y con estos mismos se representa la intensidad de la canción.
-- **loudness**: qué tan ruidosa es una canción, valores flotantes basados en los decibeles que tiene, este valor puede ir desde -60 dB hasta 0 dB.
-- **spechiness**: detecta la presencia de palabras habladas en la pista, valores flotantes que van desde 0.33 a 0.66
-- **acousticness**: este valor se representa igualmente con flotantes que van desde 0.0 a 1.0
-- **instrumentalness**: predice si una canción no contiene voces, en este contexto, las palabras “oh”, “ah” cuentan como instrumental. De igual manera está descrito con valores flotantes de entre 0.0 a 1.0, si una canción tiene instrumentalidad que supera el 0.5 es contado como instrumental.
-- **valence**: este valor representa la positividad de una canción, este valor es representado con flotantes entre 0.0 y 1.0, mientras una valencia es más baja puede considerarse como triste o depresiva, mientras que si es un valor más cercano a uno representa una canción más eufórica o alegre
-- **tempo**: valores flotantes, que representan las pulsaciones por minuto (PPM) de la canción, este término musical describe el ritmo de una canción.
-- **spec_rate**: este valor representa el muestreo espectral, se utiliza para saber si la calidad de una canción es buena o no, de igual describe este dato con flotantes, sin embargo, para este proyecto no será necesario utilizar este dato.
-- **labels**: contiene el género o categoría al que se le relaciona, las cuales son
-    - happy (1) 
-    - sad (0)
-    - calm (3)
-    - energetic (2).
-
-Estos datos son muy importantes para nuestro problema de negocio, pues a través de un análisis de características de las canciones que el usuario escuche, se podrán recomendar canciones con características similares, de manera que el usuario tendrá una mejor satisfacción al recibir recomendaciones a través de Spotify.
-""")
-st.write("#### :green[Inconsistencias]")
-st.write("En general este Dataset está muy completo, no encontramos inconsistencias de datos, no hay datos nulos ni duplicados, lo cual nos permitirá realizar un análisis de datos bastante completo.")
-
-st.subheader(":blue[Preparacion de los Datos]")
-st.write("#### :green[Selección y Limpieza]")
-st.write("""
-En general este Dataset está muy completo, no encontramos inconsistencias de datos, no hay datos nulos ni duplicados, lo cual nos permitirá realizar un análisis de datos bastante completo.
-Las técnicas que utilizamos seleccionar y limpiar los datos que queremos obtener del Dataset fueron:
-1.	Carga de datos: cargamos los dos archivos .csv y los concatenamos, para después eliminar columnas repetidas.
-2.	Dataframe: covertimos los datos cargados en un Dataframe para poder manipular los datos.
-3.	Drop de datos innecesarios, como lo mencionamos en la descripción de datos, la columna spec_rate no sería relevante para el proyecto, por lo que optamos por eliminarla.
-4.	Rename: renombramos la columna “Unnamed: 0” por “song index” para ser más descriptivos con el dato de índice que nos brinda esta columna, además, renombramos la columna “labels” por “mood”, ya que indica con índice la emoción correspondiente.
-5.	Creación de una nueva columna: ya que queremos que nuestros datos sean más claros, creamos una nueva columna la cual dice la duración de las canciones en minutos y segundos.
-a.	Primero copiamos los datos de “duration (ms)” a la columna “duration (mm:ss)” convirténdolos a timedelta
-b.	Después aplicamos una función lambda que permite que se muestre el tiempo en un formato de minutos y segundos.
-6.	Set index: utilizamos la columna “song index” como la columna de índice para este dataframe.
-""")
-
-st.write("#### :green[Integración y Transformación de los Datos]")
-st.write("""
-        Concatenamos ambos archivos csv para obtener los datos relacionados con la uri y los labels, además de eliminar las columnas duplicadas.
+st.markdown("""
+            <h2 class="topic">Integracion y transformacion de datos</h2>
+            <p class='text'> 
+                        Concatenamos ambos archivos csv para obtener los datos relacionados con la uri y los labels, además de eliminar las columnas duplicadas.
         Renombramos las columnas para manipularlas de mejor manera.
         Creamos una nueva columna que contiene la duración de la canción en minutos y segundos para poder interpretarla de mejor manera.
         Mapeamos los estados de ánimo a valores numéricos para poder manipularlos de mejor manera.
-        Indicamos el índice de la canción. 
-         """)
+        Indicamos el índice de la canción.
+            </p>
+            """,unsafe_allow_html=True)
+
 
 # Cargamos el Dataset
 data = pd.concat([pd.read_csv('./data/278k_song_labelled.csv'),
@@ -90,8 +156,7 @@ data = pd.concat([pd.read_csv('./data/278k_song_labelled.csv'),
 
 # Convertimos los datos a un DataFrame
 df = pd.DataFrame(data)
-
-st.write("#### :green[Dataset Original]")
+st.markdown('<h2 class="topic">Dataset Original</h2>',unsafe_allow_html=True)
 
 # Eliminamos las columnas repetidas
 df = df.loc[:,~df.columns.duplicated()]
@@ -163,7 +228,7 @@ st.markdown("""
                 df.set_index('track index', inplace=True)
             """)
 
-st.write("#### :violet[Resultado del Procesamiento]")
+st.write('<h1 class="title" style="color:white"; font-size:"20px">Resultado del procedimiento</h1>',unsafe_allow_html=True)
 # Mostrar DataFrame
 st.write('## DataFrame')
 st.write(df)

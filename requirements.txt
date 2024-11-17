@@ -4,3 +4,5 @@ tensorflow
 matplotlib 
 seaborn
 graphviz
+scikit-image
+streamlit
