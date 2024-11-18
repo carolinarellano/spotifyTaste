@@ -3,6 +3,9 @@ import matplotlib.pyplot as plt
 import streamlit as st
 from skimage import io
 
+# Make page full size
+st.set_page_config(layout="wide")
+
 # Configuración de estilo de fondo acorde a Spotify
 st.markdown(
     """
@@ -43,9 +46,14 @@ st.markdown(
     unsafe_allow_html=True
 )
 
+
 # Cargar imágenes
 Logo = io.imread(r'./img/ITESO_Logo.png')
 Spotify = io.imread(r'./img/Spotify_logo.png')
+DecisionTree = io.imread(r'./forStreamLit/decision_tree1.png')
+acuraccyDT = io.imread(r'./forStreamLit/acuraccyDTree.png')
+Knn = io.imread(r'./forStreamLit/KnnModel.png')
+acuraccyKnn = io.imread(r'./forStreamLit/acuraccyKnn.png')
 
 # Centering the content
 st.markdown('<h1 class="title">Spotify Taste</h1>', unsafe_allow_html=True)
@@ -271,3 +279,48 @@ for mood in df['mood'].unique():
     plt.subplots_adjust(top=0.85)  # Ajusta para que no se superpongan el título y las gráficas
     plt.tight_layout(rect=[0, 0, 1, 0.95])  # Deja espacio para el título
     st.pyplot(plt)
+
+
+st.markdown('''
+            <br>
+            <hr>
+            <h1 class="title" style="color:white"; font-size:"20px">Modelado de los datos</h1>
+            <p class="text"> 
+                En esta etapa, se implementaron al menos dos modelos de clasificación para abordar el problema de 
+                predicción de si a un usuario le gustará una canción basada en sus playlists. Los modelos seleccionados son
+            </p>
+            <h2 class="topic" font-size:"20px">Arbol de decisiones</h2>
+            <p class="text"> 
+                Un modelo de clasificación que se basa en la creación de un árbol de decisiones que se utiliza para predecir la clase 
+                de un objeto. El árbol de decisión se construye de manera recursiva, dividiendo el conjunto de datos en subconjuntos 
+                más pequeños y más homogéneos.
+            </p>
+            ''',unsafe_allow_html=True)
+st.image(DecisionTree,use_container_width=True,caption="Arbol de toma de decisiones")
+cols = st.columns(4)
+with cols[1]:
+    st.image(acuraccyDT,width=670,caption="Efectividad del modelo")
+    
+st.markdown('''
+            <h2 class="topic" style="text-align:center;" >Analisis de los resultados</h2>
+            <p class="text" style="text-align:justify; width:50%; margin:auto; display:block;"> 
+                Estos resultados representan que el modelo es confiable para clasificar canciones según estados de ánimo, con un desempeño sólido pero que 
+                podría mejorarse para las clases más complejas como "happy" o "sad". "Calm" es la clase mejor clasificada con alta precisión y recall, mientras 
+                que "happy" y "sad" muestran algo más de error.
+            </p>
+            <br>
+            <br>
+            <h2 class="topic" style="text-align:center;" >knn</h2>
+            <p class="text" style="text-align:justify; width:90%; margin:auto; display:block;"> 
+                El modelo KNN también se utiliza para clasificación, pero a diferencia del árbol de decisiones, KNN no tiene una estructura jerárquica; simplemente 
+                encuentra los puntos más cercanos (por proximidad) a una canción desconocida y le asigna el mood mayoritario de esos puntos cercanos.
+            </p>
+            <br>
+            <br>
+
+            ''',unsafe_allow_html=True)
+
+st.image(Knn,use_container_width=True,caption="Modelo de knn vecinos")
+cols = st.columns(4)
+with cols[1]:
+    st.image(acuraccyKnn,width=670,caption="Efectividad del modelo")
