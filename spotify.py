@@ -6,6 +6,23 @@ from skimage import io
 # Make page full size
 st.set_page_config(layout="wide")
 
+# Custom CSS for gradient background
+st.markdown(
+    """
+    <style>
+    .stApp {
+        background: linear-gradient(to right, #1DB954, #191414);
+        height: 100vh;
+        width: 100%;
+        position: absolute;
+        z-index: -1;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
+
 # Configuración de estilo de fondo acorde a Spotify
 st.markdown(
     """
@@ -56,7 +73,7 @@ Knn = io.imread(r'./forStreamLit/KnnModel.png')
 acuraccyKnn = io.imread(r'./forStreamLit/acuraccyKnn.png')
 
 # Centering the content
-st.markdown('<h1 class="title">Spotify Taste</h1>', unsafe_allow_html=True)
+st.markdown('<h1 class="title" style="color:black;">Spotify Taste</h1>', unsafe_allow_html=True)
 cols = st.columns(3)
 with cols[1]:
    st.image(Spotify, width=400)
