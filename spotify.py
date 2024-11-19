@@ -118,10 +118,10 @@ st.markdown("""<br><p class="members">\n</p>
 <p class="members">3. Axel Leonardo Fernández Albarran 739878 ISC\n</p><BR>""",unsafe_allow_html=True)
 
 
-tabs = st.tabs(["🎵 Entendimiento del negocio", "🎧 Preparación de datos", "🎹 Modelado de datos"])
+tabs = st.tabs(["🎵 Entendimiento del negocio", "🎧 Preparación de datos", "🎹 Modelado de datos", "📝Pruebas"])
 with tabs[0]:
         # Crear columnas
-    col1, col2 = st.columns(2)
+    col1, col2, col3 = st.columns(3)
 
     # Primera columna
     with col1:
@@ -403,4 +403,43 @@ with tabs[2]:
         st.markdown('<br><br>', unsafe_allow_html=True)
         st.image(acuraccyKnn, use_column_width=True, caption="Efectividad del modelo")
 
+with tabs[3]:
+    st.markdown("<h3 style='text-align: center; color: white;'>Estados de ánimo de las playlist de Caro</h3>", unsafe_allow_html=True)
 
+    # Cargar imágenes
+    graficapastel1 = io.imread(r'./img/GraficaPastel1.png')
+    graficapastel2 = io.imread(r'./img/GraficaPastel2.png')
+    graficapastel3 = io.imread(r'./img/GraficaPastel3.png')
+    graficapastel4 = io.imread(r'./img/GraficaPastel4.png')
+
+    # Mostrar imágenes con descripciones
+    col1, col2 = st.columns(2)
+
+    # Primera columna
+    with col1:
+        st.image(graficapastel1, use_column_width=True, caption="Distribución inicial: Estado de ánimo 1")
+        st.image(graficapastel3, use_column_width=True, caption="Distribución ajustada: Estado de ánimo 3")
+
+    # Segunda columna
+    with col2:
+        st.image(graficapastel2, use_column_width=True, caption="Distribución ajustada: Estado de ánimo 2")
+        st.image(graficapastel4, use_column_width=True, caption="Distribución final: Estado de ánimo 4")
+
+    st.markdown("<p style='text-align: center; color: white;'>Estas distribuciones muestran la variación en los estados de ánimo en diferentes etapas del análisis.</p>", unsafe_allow_html=True)
+
+    st.markdown("<h3 style='text-align: center; color: white;'>Estados de ánimo de las playlist de Yochi</h3>", unsafe_allow_html=True)
+
+    # Cargar imágenes
+    #graficapastel1 = io.imread(r'./img/GraficaPastel1.png')
+    #graficapastel2 = io.imread(r'./img/GraficaPastel2.png')
+    #graficapastel3 = io.imread(r'./img/GraficaPastel3.png')
+    #graficapastel4 = io.imread(r'./img/GraficaPastel4.png')
+    # Primera columna
+    #with col1:
+    #    st.image(graficapastel1, use_column_width=True, caption="Distribución inicial: Estado de ánimo 1")
+    #    st.image(graficapastel3, use_column_width=True, caption="Distribución ajustada: Estado de ánimo 3")
+
+    # Segunda columna
+    #with col2:
+    #    st.image(graficapastel2, use_column_width=True, caption="Distribución ajustada: Estado de ánimo 2")
+    #    st.image(graficapastel4, use_column_width=True, caption="Distribución final: Estado de ánimo 4")
