@@ -6,3 +6,5 @@ seaborn
 graphviz
 scikit-image
 streamlit
+plotly
+streamlit-aggrid
