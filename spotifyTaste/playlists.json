@@ -1,0 +1,22 @@
+[
+    {
+        "index": 0,
+        "uri": "spotify:user:cari02av:spotify:playlist:64i5wyeHqjnHI6gE5lrZ8L",
+        "like": true
+    },
+    {
+        "index": 1,
+        "uri": "spotify:user:cari02av:spotify:playlist:4415OG5fdJtkak4EAXkUxZ",
+        "like": true
+    },
+    {
+        "index": 2,
+        "uri": "spotify:user:unknown:spotify:playlist:0T9nYAPFagy2WRDtzrJmNn",
+        "like": false
+    },
+    {
+        "index": 3,
+        "uri": "spotify:user:unknown:spotify:playlist:3sb9xMhsdvAdLGrGX6lEMb",
+        "like": false
+    }
+]

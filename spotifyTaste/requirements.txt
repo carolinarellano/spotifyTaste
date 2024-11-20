@@ -1,0 +1,10 @@
+spotipy
+pandas
+tensorflow
+matplotlib 
+seaborn
+graphviz
+scikit-image
+streamlit
+plotly
+streamlit-aggrid

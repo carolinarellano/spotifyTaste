@@ -115,7 +115,9 @@ st.markdown('<h1 class="title" style="color:white; font-size:20px">Equipo</h1>',
 st.markdown("""<br><p class="members">\n</p>
 <p class="members">1. Yochabel Martínez Cázares 738438 ISC\n</p>
 <p class="members">2. Ana Carolina Arellano Valdez 738422 ISC\n</p>
-<p class="members">3. Axel Leonardo Fernández Albarran 739878 ISC\n</p><BR>""",unsafe_allow_html=True)
+<p class="members">3. Axel Leonardo Fernández Albarran 739878 ISC\n</p>
+<p class="members">4. Claudio Xavier Bayro Jablonski\n</p>
+""",unsafe_allow_html=True)
 
 
 tabs = st.tabs(["🎵 Entendimiento del negocio", "🎧 Preparación de datos", "🎹 Modelado de datos", "📝Pruebas"])

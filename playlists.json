@@ -18,5 +18,15 @@
         "index": 3,
         "uri": "spotify:user:unknown:spotify:playlist:3sb9xMhsdvAdLGrGX6lEMb",
         "like": false
+    },
+    {
+        "index": 4,
+        "uri": "spotify:user:unknown:spotify:playlist:2Cw0rjDuwnwDQ2589MltyW",
+        "like": false
+    },
+    {
+        "index": 5,
+        "uri": "spotify:user:unknown:spotify:playlist:4z3BZPg2cHJyvisX0zKZUR",
+        "like": true
     }
 ]
